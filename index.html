@@ -22,7 +22,11 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
-                    <div class="content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider1">
+                        Hide the question
+                    </label>
+                    <div class="content" id="1">
                         Explain how this works in JavaScript.
                         Can you give an example of one of the ways that working with this has changed in ES6?
                         <div class="control">
@@ -42,6 +46,10 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider2">
+                        Hide the question
+                    </label>
                     <div class="content">
                         What's the difference between a variable that is: null, undefined or undeclared?
                         How would you go about checking for any of these states?
@@ -62,6 +70,10 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider3">
+                        Hide the question
+                    </label>
                     <div class="content">
                         Can you describe the main difference between the Array.forEach() loop and Array.map() methods and why you would pick one versus the other?
                         <div class="control">
@@ -88,6 +100,10 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider4">
+                        Hide the question
+                    </label>
                     <div class="content">
                         Can you offer a use case for the new arrow => function syntax? How does this new syntax differ from other functions?
                         <div class="control">
@@ -107,6 +123,10 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider5">
+                        Hide the question
+                    </label>
                     <div class="content">
                         What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
                         <div class="control">
@@ -126,6 +146,10 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider6">
+                        Hide the question
+                    </label>
                     <div class="content">
                         What is the difference between while and do-while loops in JavaScript?
                         <div class="control">
@@ -152,7 +176,11 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
-                    <div class="content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider7">
+                        Hide the question
+                    </label>
+                       <div class="content">
                         Can you give an example of a curry function and why this syntax offers an advantage?
                         <div class="control">
                             <label class="radio">
@@ -171,6 +199,10 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
+                    <label class="checkbox">
+                        <input type="checkbox" id="hider8">
+                        Hide the question
+                    </label>
                     <div class="content">
                         Discuss how you might use Object Oriented Programming principles when coding with JavaScript.
                         <div class="control">
@@ -190,6 +222,10 @@
         <div class="column is-one-third">
             <div class="card">
                 <div class="card-content">
+                    <label class="checkbox">
+                        <input type="checkbox"  id="hider9">
+                        Hide the question
+                    </label>
                     <div class="content">
                         What are the benefits of using spread syntax and how is it different from rest syntax?
                         <div class="control">
@@ -207,11 +243,23 @@
             </div>
         </div>
             </div>
-    </div></div></div>
+    </div>
+    </div>
+    </div>
+</section>
+<section>
+    <div class="column is-half">
+        Add new question
+            <textarea class="textarea is-primary" placeholder="Add new question" id="new_question">
+            </textarea>
+    </div>
+    <div class="column is-half"  ><center>
+        <button class="" onclick=" return add_Question()">Add</button></center>
+    </div>
 </section>
 <section>
     <div class="column is-full" id="Result" ><center>
-        <button class="button is-warning" onclick="return check()">Result</button></center>
+        <button class="button is-warning" onclick="return Result()">Result</button></center>
     </div>
 </section>
 <script src="js/main.js"></script>
