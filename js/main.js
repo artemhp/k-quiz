@@ -27,7 +27,7 @@ function  Result(){
     arr.forEach(el => {
         res= check(arr[el]);
     })
-    const yes = res.filter(el => el === true).length;
+    const yes = res.filter(el => el === "yes").length;
     const result = levelOfConfidence(yes);
     document.getElementById('Result').parentElement.insertAdjacentHTML('afterend',
         `<footer class="footer hero is-warning">
