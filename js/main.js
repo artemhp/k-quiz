@@ -6,7 +6,6 @@ function  check(v){
           }
       });
  }
-
 function levelOfConfidence(yes)
 {
   let level;
