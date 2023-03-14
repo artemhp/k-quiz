@@ -20,13 +20,14 @@ function levelOfConfidence(yes)
 }
 function  Result(){
     const arr= [1,2,3,4,5,6,7,8,9];
+    let res=[];
      if(add_Question){
         arr.push('10');
     }
     arr.forEach(el => {
-        check(arr[el]);
+        res= check(arr[el]);
     })
-    const yes = arr.filter(el => el.status = true).length;
+    const yes = res.filter(el => el.status = true).length;
     const result = levelOfConfidence(yes);
     document.getElementById('Result').parentElement.insertAdjacentHTML('afterend',
         `<footer class="footer hero is-warning">
