@@ -73,7 +73,6 @@ function Result() {
     </footer>`
     );
 }
-
-document.getElementById('hider1').onclick = function() {
+    document.getElementById('hider1').onclick = function() {
     document.getElementById('1').hidden = true;
 };
