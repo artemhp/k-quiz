@@ -10,15 +10,15 @@ function check(v) {
 }
 
 function levelOfConfidence(yes) {
-    let level;
     if (yes < 4) {
-        level = "Your knowledge is not enough";
-    } else if (yes === 7) {
-        level = "Intermediate level of knowledge";
-    } else if (yes > 8) {
-        level = "Great job!You passed the test!";
+        return "Your knowledge is not enough";
+    } else if (yes < 7) {
+        return "Your knowledge is intermediate";
+    } else if (yes < 10) {
+        return "Your knowledge is advanced";
+    } else {
+        return "Great job! You passed the test!";
     }
-    return level;
 }
 
 function add_Question() {
@@ -60,19 +60,32 @@ function Result() {
     arr.forEach(el => {
         res.push(check(el));
     });
-    const yes = res.filter(el => el === "yes").length;
-    const result = levelOfConfidence(yes);
+    const yesIndices = res.reduce((acc, el, index) => {
+        if (el === 'yes') {
+            acc.push(index);
+        }
+        return acc;
+    }, []);
+    const yesVariants = yesIndices.map(index => `Variant ${index + 1}`);
+    const result = levelOfConfidence(yesIndices.length);
     document.getElementById('Result').parentElement.insertAdjacentHTML(
         'afterend',
         `<footer class="footer hero is-warning">
       <div class="content has-text-centered">
         <p>
           <strong>${result}</strong>
+          <br>
+          Variants selected as 'yes': ${yesVariants.join(', ')}
         </p>
       </div>
     </footer>`
     );
 }
-    document.getElementById('hider1').onclick = function() {
-    document.getElementById('1').hidden = true;
-};
+function hideDiv(divId) {
+    let x = document.getElementById(divId);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
