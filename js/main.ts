@@ -87,7 +87,7 @@ function displayCards() {
 
 function check(v:number) {
     const q = document.getElementsByName('answer' + v) as NodeListOf<HTMLInputElement>;
-    let result = null;
+    let result = '';
     q.forEach(element  => {
         if (element.checked) {
             result = element.value;
@@ -97,7 +97,7 @@ function check(v:number) {
 }
 
 displayCards();
-function levelOfConfidence(yes) {
+function levelOfConfidence(yes:number) {
     if (yes < 4) {
         return "Your knowledge is not enough";
     } else if (yes < 7) {
@@ -110,8 +110,20 @@ function levelOfConfidence(yes) {
 }
 
 function add_Question() {
-    let add = document.getElementById('new_question');
-    document.getElementById('new_question').parentElement.insertAdjacentHTML(
+    // let add:HTMLInputElement = document.getElementById('new_question') as HTMLInputElement;
+
+    let add:HTMLInputElement | null;
+    add = document.getElementById('new_question') as HTMLInputElement | null;
+
+    if (!add) {
+      console.log('No element');
+      return;
+    }
+
+    const newQuestion = document.getElementById('new_question');
+    const isParentExist = newQuestion?.parentElement;
+    if (isParentExist) {
+      newQuestion.parentElement.insertAdjacentHTML(
         'beforebegin',
         `<section class="section">
       <div class="columns">
@@ -137,17 +149,21 @@ function add_Question() {
       </div>
     </section>`
     );
+    } else {
+      console.log('!!!');
+    }
+    
 }
 function Result() {
     const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    if (document.getElementById('new_question').value) {
-        arr.push('10');
+    if ((document.getElementById('new_question') as HTMLInputElement ).value) {
+        arr.push(10);
     }
-    let res = [];
+    let res:string[] = [];
     arr.forEach(el => {
         res.push(check(el));
     });
-    const yesIndices = res.reduce((acc, el, index) => {
+    const yesIndices = res.reduce((acc:number[], el, index: number) => {
         if (el === 'yes') {
             acc.push(index);
         }
@@ -169,7 +185,7 @@ function Result() {
     );
 }
 
-function hideDiv(divId) {
+function hideDiv(divId: string) {
     let x = document.getElementById(divId);
     if (x.style.display === "none") {
         x.style.display = "block";

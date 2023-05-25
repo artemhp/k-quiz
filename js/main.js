@@ -49,11 +49,16 @@ function displayCards() {
             cardCount = 0;
         }
     });
-    cardsElement.innerHTML = rowHTML;
+    if (cardsElement) {
+        cardsElement.innerHTML = rowHTML;
+    }
+    else {
+        console.log("No card container");
+    }
 }
 function check(v) {
     var q = document.getElementsByName('answer' + v);
-    var result = null;
+    var result = '';
     q.forEach(function (element) {
         if (element.checked) {
             result = element.value;
@@ -77,13 +82,26 @@ function levelOfConfidence(yes) {
     }
 }
 function add_Question() {
-    var add = document.getElementById('new_question');
-    document.getElementById('new_question').parentElement.insertAdjacentHTML('beforebegin', "<section class=\"section\">\n      <div class=\"columns\">\n        <div class=\"column is-one-third\">\n          <div class=\"card\">\n            <div class=\"card-content\">\n              <div class=\"content\">\n                ".concat(add.value, "\n                <div class=\"control\">\n                  <label class=\"radio\">\n                    <input type=\"radio\" name=\"answer10\" value=\"yes\">\n                    Yes\n                  </label>\n                  <label class=\"radio\">\n                    <input type=\"radio\" name=\"answer10\" value=\"no\">\n                    No\n                  </label>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>"));
+    // let add:HTMLInputElement = document.getElementById('new_question') as HTMLInputElement;
+    var add;
+    add = document.getElementById('new_question');
+    if (!add) {
+        console.log('No element');
+        return;
+    }
+    var newQuestion = document.getElementById('new_question');
+    var isParentExist = newQuestion === null || newQuestion === void 0 ? void 0 : newQuestion.parentElement;
+    if (isParentExist) {
+        newQuestion.parentElement.insertAdjacentHTML('beforebegin', "<section class=\"section\">\n      <div class=\"columns\">\n        <div class=\"column is-one-third\">\n          <div class=\"card\">\n            <div class=\"card-content\">\n              <div class=\"content\">\n                ".concat(add.value, "\n                <div class=\"control\">\n                  <label class=\"radio\">\n                    <input type=\"radio\" name=\"answer10\" value=\"yes\">\n                    Yes\n                  </label>\n                  <label class=\"radio\">\n                    <input type=\"radio\" name=\"answer10\" value=\"no\">\n                    No\n                  </label>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>"));
+    }
+    else {
+        console.log('!!!');
+    }
 }
 function Result() {
     var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     if (document.getElementById('new_question').value) {
-        arr.push('10');
+        arr.push(10);
     }
     var res = [];
     arr.forEach(function (el) {
